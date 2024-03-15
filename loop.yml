@@ -1,0 +1,12 @@
+- hosts: application_app
+  remote_user: ubuntu
+  become: true
+  tasks:
+   - name: Install the latest version of tool
+     ansible.builtin.apt:
+         name: "{{item}}"
+         state: present
+     loop:
+       - wget
+       - git
+       - unzip
